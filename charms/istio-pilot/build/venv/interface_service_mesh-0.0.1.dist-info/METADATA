@@ -1,0 +1,71 @@
+Metadata-Version: 2.1
+Name: interface-service-mesh
+Version: 0.0.1
+Summary: Service Mesh Interface
+Home-page: UNKNOWN
+Author: Dominik Fleischmann
+Author-email: dominik.fleischmann@canonical.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: serialized-data-interface
+
+Overview
+========
+
+This repository hosts code for the Service Mesh interface
+
+Usage
+=====
+
+### Service Mesh provider
+
+```yaml
+# metadata.yaml
+...
+provides:
+  service-mesh:
+    interface: service-mesh
+```
+
+### Service Mesh requirer
+
+```yaml
+# metadata.yaml
+...
+requires:
+  service-mesh:
+    interface: service-mesh
+```
+
+### All Service Mesh charms
+
+```yaml
+# layer.yaml
+includes:
+  ...
+  - "interface:service-mesh"
+```
+
+### Provider charm handling
+
+``` python
+routes = endpoint_from_name('service-mesh').routes()
+```
+
+### Requirer charm handling
+
+``` python
+@when('endpoint.service-mesh.joined')
+def configure_mesh():
+    endpoint_from_name('service-mesh').add_route(
+        prefix='/foo',
+        service=hookenv.service_name(),
+        port=hookenv.config('port'),
+    )
+```
+
+

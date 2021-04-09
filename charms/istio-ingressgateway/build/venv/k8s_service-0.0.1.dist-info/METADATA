@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: k8s-service
+Version: 0.0.1
+Summary: K8s Service Operator Interface
+Home-page: UNKNOWN
+Author: Dominik Fleischmann
+Author-email: dominik.fleischmann@canonical.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: ops
+
+# K8s service Operator Interface
+
+
